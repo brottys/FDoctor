@@ -25,6 +25,8 @@
 		17C4A75A2387EC6300C49634 /* PillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4A7592387EC6300C49634 /* PillsViewController.swift */; };
 		17C4A75C2387EF6500C49634 /* PillsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4A75B2387EF6500C49634 /* PillsModel.swift */; };
 		17C4A75F238820AC00C49634 /* PillsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C4A75E238820AC00C49634 /* PillsViewController.xib */; };
+		17C4A76223895D5100C49634 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */; };
+		17C4A76323895D5100C49634 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		17C4A7592387EC6300C49634 /* PillsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillsViewController.swift; sourceTree = "<group>"; };
 		17C4A75B2387EF6500C49634 /* PillsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillsModel.swift; sourceTree = "<group>"; };
 		17C4A75E238820AC00C49634 /* PillsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PillsViewController.xib; sourceTree = "<group>"; };
+		17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +207,8 @@
 				17C4A75B2387EF6500C49634 /* PillsModel.swift */,
 				17C4A7592387EC6300C49634 /* PillsViewController.swift */,
 				17C4A75E238820AC00C49634 /* PillsViewController.xib */,
+				17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */,
+				17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */,
 			);
 			path = Pills;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C4A76323895D5100C49634 /* CarouselCollectionViewCell.xib in Resources */,
 				17C4A75F238820AC00C49634 /* PillsViewController.xib in Resources */,
 				17C4A72D2387D03900C49634 /* LaunchScreen.storyboard in Resources */,
 				17C4A72A2387D03900C49634 /* Assets.xcassets in Resources */,
@@ -278,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17C4A76223895D5100C49634 /* CarouselCollectionViewCell.swift in Sources */,
 				17C4A7492387D97D00C49634 /* RequestFactory.swift in Sources */,
 				17C4A7402387D8A700C49634 /* IRequestSender.swift in Sources */,
 				17C4A7562387EB9100C49634 /* PresentationAssembly.swift in Sources */,

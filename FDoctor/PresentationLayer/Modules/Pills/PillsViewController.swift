@@ -8,10 +8,15 @@
 
 import UIKit
 
-class PillsViewController: UIViewController {
+class PillsViewController: UIViewController, UICollectionViewDataSource {
     
     private let presentationAssembly: IPresentationAssembly
     private let model: IPillsModel
+    private let carouselCellIdentifier = "CarouselCollectionViewCell"
+    private let cardWidthCoeff: CGFloat = 1.5
+    private let cardMargin: CGFloat = 8
+    
+    @IBOutlet weak var carouselCollectionView: UICollectionView!
     
     init(presentationAssembly: IPresentationAssembly, model: IPillsModel) {
         self.presentationAssembly = presentationAssembly
@@ -26,6 +31,36 @@ class PillsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        carouselCollectionView.register(UINib(nibName: "\(CarouselCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: carouselCellIdentifier)
+        
+        if let flowLayout = carouselCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.minimumLineSpacing = cardMargin
+        }
+        
         model.fetchPills()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if let flowLayout = carouselCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let itemWidth = carouselCollectionView.bounds.width / cardWidthCoeff
+            flowLayout.itemSize = CGSize(width: itemWidth, height: carouselCollectionView.bounds.height - cardMargin * 2)
+            let itemWidthWithMargins = itemWidth + cardMargin * 2
+            let inset = (carouselCollectionView.bounds.width - itemWidthWithMargins) / 2 + cardMargin
+            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        }
+    }
+    
+    // MARK: - UICollectionViewDataSource
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: carouselCellIdentifier, for: indexPath)
+        return cell
+    }
+    
 }

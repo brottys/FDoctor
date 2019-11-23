@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PillsViewController" customModule="FDoctor" customModuleProvider="target">
             <connections>
+                <outlet property="carouselCollectionView" destination="fTg-1u-4EC" id="tkP-aR-Wub"/>
                 <outlet property="view" destination="iN0-l3-epB" id="nlk-96-RL3"/>
             </connections>
         </placeholder>
@@ -16,9 +17,32 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fTg-1u-4EC">
+                    <rect key="frame" x="0.0" y="44" width="414" height="400"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="am9-5A-WrD"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="omK-lU-h4C">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="F2R-lt-lgX"/>
+                    </connections>
+                </collectionView>
+            </subviews>
             <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fTg-1u-4EC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="d3p-Sx-M3o"/>
+                <constraint firstItem="fTg-1u-4EC" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="h0P-dw-tne"/>
+                <constraint firstItem="fTg-1u-4EC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="tWB-JG-Gem"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="139" y="145"/>
+            <point key="canvasLocation" x="137.68115942028987" y="144.64285714285714"/>
         </view>
     </objects>
 </document>
