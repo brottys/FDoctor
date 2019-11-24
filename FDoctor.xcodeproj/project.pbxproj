@@ -27,6 +27,7 @@
 		17C4A75F238820AC00C49634 /* PillsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C4A75E238820AC00C49634 /* PillsViewController.xib */; };
 		17C4A76223895D5100C49634 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */; };
 		17C4A76323895D5100C49634 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */; };
+		CA7CF7A977D0CD85569B43A5 /* Pods_FDoctor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AF5816ED695C781C4E4B0A /* Pods_FDoctor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,9 @@
 		17C4A75E238820AC00C49634 /* PillsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PillsViewController.xib; sourceTree = "<group>"; };
 		17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		77AF5816ED695C781C4E4B0A /* Pods_FDoctor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FDoctor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FAA501E9B72B353D79DA902 /* Pods-FDoctor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FDoctor.release.xcconfig"; path = "Target Support Files/Pods-FDoctor/Pods-FDoctor.release.xcconfig"; sourceTree = "<group>"; };
+		B91F9E7B407BF699C64567B3 /* Pods-FDoctor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FDoctor.debug.xcconfig"; path = "Target Support Files/Pods-FDoctor/Pods-FDoctor.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,17 +63,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7CF7A977D0CD85569B43A5 /* Pods_FDoctor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05CEE3734CED6232C95DEA73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77AF5816ED695C781C4E4B0A /* Pods_FDoctor.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		17C4A7142387D03600C49634 = {
 			isa = PBXGroup;
 			children = (
 				17C4A71F2387D03600C49634 /* FDoctor */,
 				17C4A71E2387D03600C49634 /* Products */,
+				25F7A53EBE123D0563A1938E /* Pods */,
+				05CEE3734CED6232C95DEA73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -213,6 +228,16 @@
 			path = Pills;
 			sourceTree = "<group>";
 		};
+		25F7A53EBE123D0563A1938E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B91F9E7B407BF699C64567B3 /* Pods-FDoctor.debug.xcconfig */,
+				9FAA501E9B72B353D79DA902 /* Pods-FDoctor.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,9 +245,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 17C4A7312387D03900C49634 /* Build configuration list for PBXNativeTarget "FDoctor" */;
 			buildPhases = (
+				8A0E47137A9D3759CB40D6E6 /* [CP] Check Pods Manifest.lock */,
 				17C4A7192387D03600C49634 /* Sources */,
 				17C4A71A2387D03600C49634 /* Frameworks */,
 				17C4A71B2387D03600C49634 /* Resources */,
+				A6570B3F5FDBA851A7322651 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -279,6 +306,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8A0E47137A9D3759CB40D6E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FDoctor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A6570B3F5FDBA851A7322651 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FDoctor/Pods-FDoctor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FDoctor/Pods-FDoctor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FDoctor/Pods-FDoctor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		17C4A7192387D03600C49634 /* Sources */ = {
@@ -434,6 +503,7 @@
 		};
 		17C4A7322387D03900C49634 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B91F9E7B407BF699C64567B3 /* Pods-FDoctor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -451,6 +521,7 @@
 		};
 		17C4A7332387D03900C49634 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FAA501E9B72B353D79DA902 /* Pods-FDoctor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

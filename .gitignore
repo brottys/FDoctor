@@ -4,3 +4,6 @@ xcuserdata/
 
 *.xccheckout
 *.xcscmblueprint
+
+Pods/
+Podfile.lock
