@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PillsViewController: UIViewController, UICollectionViewDataSource {
+class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsModelDelegate {
     
     private let presentationAssembly: IPresentationAssembly
     private let model: IPillsModel
@@ -17,6 +17,8 @@ class PillsViewController: UIViewController, UICollectionViewDataSource {
     private let cardMargin: CGFloat = 8
     
     @IBOutlet weak var carouselCollectionView: UICollectionView!
+    
+    private var dataSource: [PillDisplayModel] = []
     
     init(presentationAssembly: IPresentationAssembly, model: IPillsModel) {
         self.presentationAssembly = presentationAssembly
@@ -55,12 +57,22 @@ class PillsViewController: UIViewController, UICollectionViewDataSource {
     // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return dataSource.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: carouselCellIdentifier, for: indexPath)
         return cell
+    }
+    
+    // MARK: - IPillsModelDelegate
+    
+    func setup(dataSource: [PillDisplayModel]) {
+        self.dataSource = dataSource
+        
+        DispatchQueue.main.async {
+            self.carouselCollectionView.reloadData()
+        }
     }
     
 }

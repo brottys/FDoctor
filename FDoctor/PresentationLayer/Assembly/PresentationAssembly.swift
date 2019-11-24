@@ -20,7 +20,9 @@ class PresentationAssembly: IPresentationAssembly {
     
     func pillsViewController() -> PillsViewController {
         let model = pillsModel()
-        return PillsViewController(presentationAssembly: self, model: model)
+        let controller = PillsViewController(presentationAssembly: self, model: model)
+        model.delegate = controller
+        return controller
     }
     
     // MARK: - Private Section

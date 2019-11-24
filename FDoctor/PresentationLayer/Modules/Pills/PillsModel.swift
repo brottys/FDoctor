@@ -8,11 +8,22 @@
 
 import Foundation
 
+struct PillDisplayModel {
+    let imageUrl: String
+}
+
 protocol IPillsModel: class {
+    var delegate: IPillsModelDelegate? { get set }
     func fetchPills()
 }
 
+protocol IPillsModelDelegate: class {
+    func setup(dataSource: [PillDisplayModel])
+}
+
 class PillsModel: IPillsModel {
+    
+    weak var delegate: IPillsModelDelegate?
     
     private let pillsService: IPillsService
     
@@ -24,6 +35,8 @@ class PillsModel: IPillsModel {
         pillsService.loadPills() { (pills: [PillApiModel]?, error) in
             if let pills = pills {
                 print(pills)
+                let cells = pills.map({ PillDisplayModel(imageUrl: $0.img) })
+                self.delegate?.setup(dataSource: cells)
             } else {
                 print(error ?? "ERROR")
             }
