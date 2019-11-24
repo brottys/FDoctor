@@ -65,6 +65,13 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
         return cell
     }
     
+    // MARK: - Actions
+    
+    @IBAction func next() {
+        let indexPath = IndexPath(row: 1, section: 0)
+        carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     // MARK: - IPillsModelDelegate
     
     func setup(dataSource: [PillDisplayModel]) {
