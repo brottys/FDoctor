@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsModelDelegate {
     
@@ -54,6 +55,12 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
         }
     }
     
+    private func configurePillImage(for cell: CarouselCollectionViewCell, with pill: PillDisplayModel) {
+        if let imageView = cell.viewWithTag(1000) as? UIImageView, let url = URL(string: pill.imageUrl) {
+            imageView.kf.setImage(with: url)
+        }
+    }
+    
     // MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -61,7 +68,8 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: carouselCellIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: carouselCellIdentifier, for: indexPath) as! CarouselCollectionViewCell
+        configurePillImage(for: cell, with: dataSource[indexPath.row])
         return cell
     }
     
