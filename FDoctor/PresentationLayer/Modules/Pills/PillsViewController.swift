@@ -76,8 +76,7 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     // MARK: - Actions
     
     @IBAction func next() {
-        let indexPath = IndexPath(row: 1, section: 0)
-        carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        model.nextPill()
     }
     
     // MARK: - IPillsModelDelegate
@@ -87,6 +86,16 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
         
         DispatchQueue.main.async {
             self.carouselCollectionView.reloadData()
+        }
+    }
+    
+    func setCurrentPillAt(index: Int) {
+        if index > -1 {
+            let indexPath = IndexPath(row: index, section: 0)
+            
+            DispatchQueue.main.async {
+                self.carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            }
         }
     }
     
