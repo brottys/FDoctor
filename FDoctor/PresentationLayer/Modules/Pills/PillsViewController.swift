@@ -37,15 +37,7 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        carouselCollectionView.register(UINib(nibName: "\(CarouselCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: carouselCellIdentifier)
-        
-        if let flowLayout = carouselCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.minimumLineSpacing = cardMargin
-        }
-        
-        pageControl.numberOfPages = 0
-        nameLabel.text = ""
-        descrDoseLabel.text = ""
+        configureUI()
     
         model.fetchPills()
     }
@@ -53,19 +45,7 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        if let flowLayout = carouselCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            let itemWidth = carouselCollectionView.bounds.width / cardWidthCoeff
-            flowLayout.itemSize = CGSize(width: itemWidth, height: carouselCollectionView.bounds.height - cardMargin * 2)
-            let itemWidthWithMargins = itemWidth + cardMargin * 2
-            let inset = (carouselCollectionView.bounds.width - itemWidthWithMargins) / 2 + cardMargin
-            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
-        }
-    }
-    
-    private func configurePillImage(for cell: CarouselCollectionViewCell, with pill: PillDisplayModel) {
-        if let imageView = cell.viewWithTag(1000) as? UIImageView, let url = URL(string: pill.imageUrl) {
-            imageView.kf.setImage(with: url)
-        }
+        layoutCarousel()
     }
     
     // MARK: - UICollectionViewDataSource
@@ -108,6 +88,36 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
                 self.descrDoseLabel.text = pill.descrDose
                 self.carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             }
+        }
+    }
+    
+    // MARK: - Private Methods
+    
+    private func configurePillImage(for cell: CarouselCollectionViewCell, with pill: PillDisplayModel) {
+        if let imageView = cell.viewWithTag(1000) as? UIImageView, let url = URL(string: pill.imageUrl) {
+            imageView.kf.setImage(with: url)
+        }
+    }
+    
+    private func configureUI() {
+        carouselCollectionView.register(UINib(nibName: "\(CarouselCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: carouselCellIdentifier)
+        
+        if let flowLayout = carouselCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.minimumLineSpacing = cardMargin
+        }
+        
+        pageControl.numberOfPages = 0
+        nameLabel.text = ""
+        descrDoseLabel.text = ""
+    }
+    
+    private func layoutCarousel() {
+        if let flowLayout = carouselCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let itemWidth = carouselCollectionView.bounds.width / cardWidthCoeff
+            flowLayout.itemSize = CGSize(width: itemWidth, height: carouselCollectionView.bounds.height - cardMargin * 2)
+            let itemWidthWithMargins = itemWidth + cardMargin * 2
+            let inset = (carouselCollectionView.bounds.width - itemWidthWithMargins) / 2 + cardMargin
+            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
         }
     }
     
