@@ -17,7 +17,7 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     private let cardWidthCoeff: CGFloat = 1.5
     private let cardMargin: CGFloat = 8
     
-    @IBOutlet weak var carouselCollectionView: UICollectionView!
+    @IBOutlet weak var carouselCollectionView: CarouselCollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descrDoseLabel: UILabel!
@@ -45,7 +45,7 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        layoutCarousel()
+        //layoutCarousel()
     }
     
     // MARK: - UICollectionViewDataSource
@@ -106,9 +106,9 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     private func configureUI() {
         carouselCollectionView.register(UINib(nibName: "\(CarouselCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: carouselCellIdentifier)
         
-        if let flowLayout = carouselCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.minimumLineSpacing = cardMargin
-        }
+//        if let flowLayout = carouselCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            flowLayout.minimumLineSpacing = cardMargin
+//        }
         
         pageControl.numberOfPages = 0
         nameLabel.text = ""

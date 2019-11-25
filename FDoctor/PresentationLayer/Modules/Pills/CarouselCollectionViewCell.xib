@@ -16,25 +16,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="179" height="187"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f62-DT-blR">
-                        <rect key="frame" x="16" y="16" width="147" height="155"/>
-                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaS-rF-izI">
+                        <rect key="frame" x="0.0" y="0.0" width="179" height="187"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKT-lp-XgP" userLabel="Card View">
+                                <rect key="frame" x="0.0" y="0.0" width="179" height="187"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f62-DT-blR">
+                                        <rect key="frame" x="16" y="16" width="147" height="155"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <constraints>
+                                    <constraint firstItem="f62-DT-blR" firstAttribute="leading" secondItem="mKT-lp-XgP" secondAttribute="leading" constant="16" id="81f-RL-c81"/>
+                                    <constraint firstItem="f62-DT-blR" firstAttribute="top" secondItem="mKT-lp-XgP" secondAttribute="top" constant="16" id="HVM-k6-exk"/>
+                                    <constraint firstAttribute="trailing" secondItem="f62-DT-blR" secondAttribute="trailing" constant="16" id="JUt-jp-zrx"/>
+                                    <constraint firstAttribute="bottom" secondItem="f62-DT-blR" secondAttribute="bottom" constant="16" id="hax-lO-jNO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mKT-lp-XgP" secondAttribute="trailing" id="4Pv-bg-JwE"/>
+                            <constraint firstAttribute="bottom" secondItem="mKT-lp-XgP" secondAttribute="bottom" id="A9k-B3-IDX"/>
+                            <constraint firstItem="mKT-lp-XgP" firstAttribute="top" secondItem="jaS-rF-izI" secondAttribute="top" id="bzl-d6-aPo"/>
+                            <constraint firstItem="mKT-lp-XgP" firstAttribute="leading" secondItem="jaS-rF-izI" secondAttribute="leading" id="vJe-gd-1kV"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="f62-DT-blR" secondAttribute="bottom" constant="16" id="6S9-5o-40T"/>
-                <constraint firstAttribute="trailing" secondItem="f62-DT-blR" secondAttribute="trailing" constant="16" id="EPd-jP-QPk"/>
-                <constraint firstItem="f62-DT-blR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Ftr-9N-4c3"/>
-                <constraint firstItem="f62-DT-blR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="Fxw-MY-moT"/>
+                <constraint firstAttribute="bottom" secondItem="jaS-rF-izI" secondAttribute="bottom" id="2ji-Kc-TzA"/>
+                <constraint firstAttribute="trailing" secondItem="jaS-rF-izI" secondAttribute="trailing" id="9Rd-KO-ySy"/>
+                <constraint firstItem="jaS-rF-izI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dSe-7y-689"/>
+                <constraint firstItem="jaS-rF-izI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="fIJ-Oj-H99"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="179" height="187"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                    <integer key="value" value="8"/>
-                </userDefinedRuntimeAttribute>
-            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="mainView" destination="jaS-rF-izI" id="rDR-Ps-abG"/>
+            </connections>
             <point key="canvasLocation" x="215.21739130434784" y="186.49553571428569"/>
         </collectionViewCell>
     </objects>

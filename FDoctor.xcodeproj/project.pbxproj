@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,8 @@
 		17C4A75F238820AC00C49634 /* PillsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C4A75E238820AC00C49634 /* PillsViewController.xib */; };
 		17C4A76223895D5100C49634 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */; };
 		17C4A76323895D5100C49634 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */; };
+		17EAA250238BE2F1004974DE /* CarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAA24F238BE2F1004974DE /* CarouselFlowLayout.swift */; };
+		17EAA252238C0335004974DE /* CarouselCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAA251238C0335004974DE /* CarouselCollectionView.swift */; };
 		CA7CF7A977D0CD85569B43A5 /* Pods_FDoctor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AF5816ED695C781C4E4B0A /* Pods_FDoctor.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		17C4A75E238820AC00C49634 /* PillsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PillsViewController.xib; sourceTree = "<group>"; };
 		17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		17EAA24F238BE2F1004974DE /* CarouselFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselFlowLayout.swift; sourceTree = "<group>"; };
+		17EAA251238C0335004974DE /* CarouselCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionView.swift; sourceTree = "<group>"; };
 		77AF5816ED695C781C4E4B0A /* Pods_FDoctor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FDoctor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FAA501E9B72B353D79DA902 /* Pods-FDoctor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FDoctor.release.xcconfig"; path = "Target Support Files/Pods-FDoctor/Pods-FDoctor.release.xcconfig"; sourceTree = "<group>"; };
 		B91F9E7B407BF699C64567B3 /* Pods-FDoctor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FDoctor.debug.xcconfig"; path = "Target Support Files/Pods-FDoctor/Pods-FDoctor.debug.xcconfig"; sourceTree = "<group>"; };
@@ -224,6 +228,8 @@
 				17C4A75E238820AC00C49634 /* PillsViewController.xib */,
 				17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */,
 				17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */,
+				17EAA24F238BE2F1004974DE /* CarouselFlowLayout.swift */,
+				17EAA251238C0335004974DE /* CarouselCollectionView.swift */,
 			);
 			path = Pills;
 			sourceTree = "<group>";
@@ -234,7 +240,6 @@
 				B91F9E7B407BF699C64567B3 /* Pods-FDoctor.debug.xcconfig */,
 				9FAA501E9B72B353D79DA902 /* Pods-FDoctor.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -359,12 +364,14 @@
 				17C4A7402387D8A700C49634 /* IRequestSender.swift in Sources */,
 				17C4A7562387EB9100C49634 /* PresentationAssembly.swift in Sources */,
 				17C4A7532387E3CB00C49634 /* PillsRequest.swift in Sources */,
+				17EAA250238BE2F1004974DE /* CarouselFlowLayout.swift in Sources */,
 				17C4A7422387D8C100C49634 /* RequestSender.swift in Sources */,
 				17C4A7472387D94300C49634 /* IRequest.swift in Sources */,
 				17C4A74C2387DA7300C49634 /* ServiceAssembly.swift in Sources */,
 				17C4A7382387D6BA00C49634 /* RootAssembly.swift in Sources */,
 				17C4A73B2387D85500C49634 /* CoreAssembly.swift in Sources */,
 				17C4A7442387D8F400C49634 /* IParser.swift in Sources */,
+				17EAA252238C0335004974DE /* CarouselCollectionView.swift in Sources */,
 				17C4A75C2387EF6500C49634 /* PillsModel.swift in Sources */,
 				17C4A7512387DE9100C49634 /* PillsParser.swift in Sources */,
 				17C4A7212387D03600C49634 /* AppDelegate.swift in Sources */,

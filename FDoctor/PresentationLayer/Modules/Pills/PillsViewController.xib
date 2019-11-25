@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PillsViewController" customModule="FDoctor" customModuleProvider="target">
             <connections>
-                <outlet property="carouselCollectionView" destination="fTg-1u-4EC" id="tkP-aR-Wub"/>
+                <outlet property="carouselCollectionView" destination="fTg-1u-4EC" id="oWz-jw-uBP"/>
                 <outlet property="descrDoseLabel" destination="tER-Hy-zDU" id="Lp3-nL-Yqu"/>
                 <outlet property="nameLabel" destination="Yma-tP-LTq" id="Omy-GV-dVe"/>
                 <outlet property="pageControl" destination="7d3-uU-cYD" id="uZo-gc-34p"/>
@@ -32,7 +32,7 @@
                         <action selector="refresh" destination="-1" eventType="touchUpInside" id="2Qj-cM-dnq"/>
                     </connections>
                 </button>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fTg-1u-4EC">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fTg-1u-4EC" customClass="CarouselCollectionView" customModule="FDoctor" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="92" width="414" height="448"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="omK-lU-h4C">
