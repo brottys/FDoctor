@@ -39,7 +39,7 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
         
         configureUI()
     
-        model.fetchPills()
+        refresh()
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,6 +61,10 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     }
     
     // MARK: - Actions
+    
+    @IBAction func refresh() {
+        model.fetchPills()
+    }
     
     @IBAction func next() {
         model.nextPill()
