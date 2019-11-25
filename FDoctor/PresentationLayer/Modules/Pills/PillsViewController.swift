@@ -43,6 +43,10 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
             flowLayout.minimumLineSpacing = cardMargin
         }
         
+        pageControl.numberOfPages = 0
+        nameLabel.text = ""
+        descrDoseLabel.text = ""
+    
         model.fetchPills()
     }
     
