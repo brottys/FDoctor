@@ -18,6 +18,9 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     private let cardMargin: CGFloat = 8
     
     @IBOutlet weak var carouselCollectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descrDoseLabel: UILabel!
     
     private var dataSource: [PillDisplayModel] = []
     
@@ -85,6 +88,7 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
         self.dataSource = dataSource
         
         DispatchQueue.main.async {
+            self.pageControl.numberOfPages = dataSource.count
             self.carouselCollectionView.reloadData()
         }
     }
@@ -92,8 +96,12 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     func setCurrentPillAt(index: Int) {
         if index > -1 {
             let indexPath = IndexPath(row: index, section: 0)
+            let pill = dataSource[index]
             
             DispatchQueue.main.async {
+                self.pageControl.currentPage = index
+                self.nameLabel.text = pill.name
+                self.descrDoseLabel.text = pill.descrDose
                 self.carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
             }
         }

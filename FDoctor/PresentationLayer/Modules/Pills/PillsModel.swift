@@ -9,7 +9,9 @@
 import Foundation
 
 struct PillDisplayModel {
+    let name: String
     let imageUrl: String
+    let descrDose: String
 }
 
 protocol IPillsModel: class {
@@ -42,7 +44,12 @@ class PillsModel: IPillsModel {
                 self.pills = pills
                 self.currentPillIndex = pills.count > 0 ? 0 : -1
                 
-                let cells = pills.map({ PillDisplayModel(imageUrl: $0.img) })
+                let cells = pills.map({
+                    PillDisplayModel(
+                        name: $0.name,
+                        imageUrl: $0.img,
+                        descrDose: "\($0.description). \($0.dose)"
+                    )})
                 self.delegate?.setup(dataSource: cells)
                 self.delegate?.setCurrentPillAt(index: self.currentPillIndex)
             } else {
@@ -63,15 +70,6 @@ class PillsModel: IPillsModel {
         currentPillIndex += 1
     
         delegate?.setCurrentPillAt(index: currentPillIndex)
-    }
-    
-    // MARK: - Private Methods
-    
-    private func pillDisplayModel(forIndex index: Int) -> PillDisplayModel? {
-        guard (0..<pills.count).contains(index) else {
-            return nil
-        }
-        return PillDisplayModel(imageUrl: pills[index].img)
     }
     
 }

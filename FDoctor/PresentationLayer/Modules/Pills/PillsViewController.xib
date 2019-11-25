@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,6 +10,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PillsViewController" customModule="FDoctor" customModuleProvider="target">
             <connections>
                 <outlet property="carouselCollectionView" destination="fTg-1u-4EC" id="tkP-aR-Wub"/>
+                <outlet property="descrDoseLabel" destination="tER-Hy-zDU" id="Lp3-nL-Yqu"/>
+                <outlet property="nameLabel" destination="Yma-tP-LTq" id="Omy-GV-dVe"/>
+                <outlet property="pageControl" destination="7d3-uU-cYD" id="uZo-gc-34p"/>
                 <outlet property="view" destination="iN0-l3-epB" id="nlk-96-RL3"/>
             </connections>
         </placeholder>
@@ -34,20 +37,47 @@
                         <outlet property="dataSource" destination="-1" id="F2R-lt-lgX"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuD-Zg-9SL">
-                    <rect key="frame" x="322" y="500" width="45" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="7d3-uU-cYD">
+                    <rect key="frame" x="20" y="452" width="374" height="37"/>
+                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="currentPageIndicatorTintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </pageControl>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yma-tP-LTq">
+                    <rect key="frame" x="20" y="509" width="374" height="38.5"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#description+dose" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tER-Hy-zDU">
+                    <rect key="frame" x="20" y="567.5" width="374" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PuD-Zg-9SL">
+                    <rect key="frame" x="349" y="639" width="45" height="30"/>
                     <state key="normal" title="Далее"/>
                     <connections>
                         <action selector="next" destination="-1" eventType="touchUpInside" id="7lQ-16-PfC"/>
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="Yma-tP-LTq" firstAttribute="top" secondItem="7d3-uU-cYD" secondAttribute="bottom" constant="20" id="4vo-Pr-jOQ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tER-Hy-zDU" secondAttribute="trailing" constant="20" id="JOo-Tg-0Xn"/>
+                <constraint firstItem="PuD-Zg-9SL" firstAttribute="top" secondItem="7d3-uU-cYD" secondAttribute="bottom" constant="150" id="ROP-iW-cuM"/>
+                <constraint firstItem="tER-Hy-zDU" firstAttribute="top" secondItem="Yma-tP-LTq" secondAttribute="bottom" constant="20" id="Vzc-XM-Tvb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Yma-tP-LTq" secondAttribute="trailing" constant="20" id="XpA-kq-LYY"/>
                 <constraint firstItem="fTg-1u-4EC" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="d3p-Sx-M3o"/>
+                <constraint firstItem="7d3-uU-cYD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="gat-7c-wTb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PuD-Zg-9SL" secondAttribute="trailing" constant="20" id="gtX-MZ-1mv"/>
                 <constraint firstItem="fTg-1u-4EC" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="h0P-dw-tne"/>
+                <constraint firstItem="7d3-uU-cYD" firstAttribute="top" secondItem="fTg-1u-4EC" secondAttribute="bottom" constant="8" id="jpC-rp-5w6"/>
+                <constraint firstItem="tER-Hy-zDU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="rCB-RU-Fel"/>
                 <constraint firstItem="fTg-1u-4EC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="tWB-JG-Gem"/>
+                <constraint firstItem="Yma-tP-LTq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="yWo-Vz-JaX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7d3-uU-cYD" secondAttribute="trailing" constant="20" id="zWs-DD-wmg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="137.68115942028987" y="144.64285714285714"/>
