@@ -1,2 +1,2 @@
 # FDoctor
-![demo](https://user-images.githubusercontent.com/5428181/69645581-70edb280-1077-11ea-9e2a-2bffe5674376.png)
+![demo](https://user-images.githubusercontent.com/5428181/69645867-ea85a080-1077-11ea-92e8-f344472769b6.jpg)
