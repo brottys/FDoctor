@@ -228,16 +228,17 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
             }
         }
         
-//        guard let indexPath = currentCenterCellIndex else { return }
-//        lastCurrentCenterCellIndex = indexPath
-//        carouselDelegate?.didChangePageIndex(newPageIndex: indexPath.row)
+        guard let indexPath = currentCenterCellIndex else { return }
+        lastCurrentCenterCellIndex = indexPath
+        carouselDelegate?.didChangePageIndex(newPageIndex: indexPath.row)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 //        delegate?.scrollViewDidEndDecelerating?(scrollView)
-        guard let indexPath = currentCenterCellIndex else { return }
-        lastCurrentCenterCellIndex = indexPath
-        carouselDelegate?.didChangePageIndex(newPageIndex: indexPath.row)
+        
+//        guard let indexPath = currentCenterCellIndex else { return }
+//        lastCurrentCenterCellIndex = indexPath
+//        carouselDelegate?.didChangePageIndex(newPageIndex: indexPath.row)
     }
     
     private func updateOffSet() {

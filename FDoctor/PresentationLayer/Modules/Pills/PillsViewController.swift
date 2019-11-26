@@ -19,6 +19,7 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     @IBOutlet weak var carouselCollectionView: CarouselCollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var labelsView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descrDoseLabel: UILabel!
     
@@ -98,6 +99,11 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, UIColle
             self.pageControl.currentPage = index
             self.nameLabel.text = pill.name
             self.descrDoseLabel.text = pill.descrDose
+            self.labelsView.alpha = 0.0
+            self.labelsView.fadeOut() {_ in
+                self.labelsView.fadeIn()
+            }
+            
 //            self.carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }

@@ -27,6 +27,7 @@
 		17C4A75F238820AC00C49634 /* PillsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C4A75E238820AC00C49634 /* PillsViewController.xib */; };
 		17C4A76223895D5100C49634 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */; };
 		17C4A76323895D5100C49634 /* CarouselCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */; };
+		17CC5A1B238D4998003C0602 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17CC5A1A238D4998003C0602 /* Extensions.swift */; };
 		17EAA250238BE2F1004974DE /* CarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAA24F238BE2F1004974DE /* CarouselFlowLayout.swift */; };
 		17EAA252238C0335004974DE /* CarouselCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EAA251238C0335004974DE /* CarouselCollectionView.swift */; };
 		CA7CF7A977D0CD85569B43A5 /* Pods_FDoctor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77AF5816ED695C781C4E4B0A /* Pods_FDoctor.framework */; };
@@ -55,6 +56,7 @@
 		17C4A75E238820AC00C49634 /* PillsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PillsViewController.xib; sourceTree = "<group>"; };
 		17C4A76023895D5100C49634 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		17C4A76123895D5100C49634 /* CarouselCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselCollectionViewCell.xib; sourceTree = "<group>"; };
+		17CC5A1A238D4998003C0602 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		17EAA24F238BE2F1004974DE /* CarouselFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselFlowLayout.swift; sourceTree = "<group>"; };
 		17EAA251238C0335004974DE /* CarouselCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionView.swift; sourceTree = "<group>"; };
 		77AF5816ED695C781C4E4B0A /* Pods_FDoctor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FDoctor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,6 +122,7 @@
 			children = (
 				17C4A7542387EB7C00C49634 /* Assembly */,
 				17C4A7572387EC1B00C49634 /* Modules */,
+				17CC5A1A238D4998003C0602 /* Extensions.swift */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				17C4A7532387E3CB00C49634 /* PillsRequest.swift in Sources */,
 				17EAA250238BE2F1004974DE /* CarouselFlowLayout.swift in Sources */,
 				17C4A7422387D8C100C49634 /* RequestSender.swift in Sources */,
+				17CC5A1B238D4998003C0602 /* Extensions.swift in Sources */,
 				17C4A7472387D94300C49634 /* IRequest.swift in Sources */,
 				17C4A74C2387DA7300C49634 /* ServiceAssembly.swift in Sources */,
 				17C4A7382387D6BA00C49634 /* RootAssembly.swift in Sources */,
