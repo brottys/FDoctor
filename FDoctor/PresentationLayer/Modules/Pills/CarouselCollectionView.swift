@@ -19,9 +19,7 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
     // MARK: - Properties (Private)
     
     private let cardWidthCoeff: CGFloat = 1.5
-//    private let cardMargin: CGFloat = 8
     private var lastCurrentCenterCellIndex: IndexPath?
-    private var currentPageIndex: Int = -1
     private var parallaxFactor: CGFloat = 1.0
     
     private var invisibleScrollView: UIScrollView!
@@ -81,57 +79,22 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
         }
     }
     
-    func didChangePageIndex(newPageIndex: Int) {
-        currentPageIndex = newPageIndex
-    }
-    
     // MARK: - Lifecycle
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         let collectionViewSize = self.frame.size
         let itemWidth = collectionViewSize.width / cardWidthCoeff
-//        let itemWidthWithMargins = itemWidth + cardMargin * 2
-//        self.inset = (collectionViewSize.width - itemWidthWithMargins) / 2 + cardMargin
         self.inset = (collectionViewSize.width - itemWidth) / 2
     }
     
     // MARK: - Overrides
-    
-    override func scrollRectToVisible(_ rect: CGRect, animated: Bool) {
-        invisibleScrollView.setContentOffset(rect.origin, animated: animated)
-    }
-    
-//    override func scrollToItem(at indexPath: IndexPath, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
-//        super.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
-//
-//        let originX = (CGFloat(indexPath.item) * (frame.size.width - (inset * 2)))
-//        let rect = CGRect(x: originX, y: 0, width: frame.size.width - (inset * 2), height: frame.height)
-//        scrollRectToVisible(rect, animated: animated)
-//        lastCurrentCenterCellIndex = indexPath
-//    }
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         
         addInvisibleScrollView(to: superview)
     }
-    
-    // MARK: - Public API
-    
-    /*
-     This method should ALWAYS be called from the ScalingCarousel delegate when
-     the UIScrollViewDelegate scrollViewDidScroll(_:) method is called
-     
-     e.g In the ScalingCarousel delegate, implement:
-     
-     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        carousel.didScroll()
-     }
-    */
-//    func didScroll() {
-//        scrollViewDidScroll(self)
-//    }
     
     // MARK: - ScrollView Magic
     
@@ -209,12 +172,6 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
     // MARK: - UIScrollViewDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let pageIndex = Int(abs(round(scrollView.contentOffset.x / scrollView.frame.width)))
-//        if pageIndex != currentPageIndex {
-//            currentPageIndex = pageIndex
-//            carouselDelegate?.didChangePageIndex(newPageIndex: pageIndex)
-//        }
-
         /*
          Move the ScalingCarousel based on the
          contentOffset of the 'invisible' UIScrollView
@@ -234,8 +191,6 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        delegate?.scrollViewDidEndDecelerating?(scrollView)
-        
 //        guard let indexPath = currentCenterCellIndex else { return }
 //        lastCurrentCenterCellIndex = indexPath
 //        carouselDelegate?.didChangePageIndex(newPageIndex: indexPath.row)
@@ -244,7 +199,6 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
     private func updateOffSet() {
         let offsetX = invisibleScrollView.contentOffset.x * parallaxFactor
         let offset = CGPoint(x: offsetX, y: invisibleScrollView.contentOffset.y)
-        //contentOffset = invisibleScrollView.contentOffset
         contentOffset = offset
     }
 
