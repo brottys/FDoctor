@@ -10,19 +10,27 @@
 
 import UIKit
 
+protocol CarouselCollectionViewDelegate: class {
+    func didChangePageIndex(newPageIndex: Int)
+}
+
 class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
     
     // MARK: - Properties (Private)
     
     private let cardWidthCoeff: CGFloat = 1.5
-    private let cardMargin: CGFloat = 8
+//    private let cardMargin: CGFloat = 8
     private var lastCurrentCenterCellIndex: IndexPath?
+    private var currentPageIndex: Int = -1
+    private var parallaxFactor: CGFloat = 1.0
     
     private var invisibleScrollView: UIScrollView!
     private var invisibleWidthConstraint: NSLayoutConstraint?
     private var invisibleLeftConstraint: NSLayoutConstraint?
     
     // MARK: - Properties (Public)
+    
+    weak var carouselDelegate: CarouselCollectionViewDelegate?
     
     /// Inset of the main, center cell
     var inset: CGFloat = 0.0 {
@@ -66,7 +74,15 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
             // Set the invisibleScrollView contentSize width based on number of items
             let contentWidth = invisibleScrollView.frame.width * CGFloat(numberItems)
             invisibleScrollView.contentSize = CGSize(width: contentWidth, height: invisibleScrollView.frame.height)
+            
+            let itemWidth = bounds.width / cardWidthCoeff
+            let internalContentWidth: CGFloat = itemWidth * CGFloat(numberItems) + inset * 2
+            parallaxFactor = contentSize.width / internalContentWidth
         }
+    }
+    
+    func didChangePageIndex(newPageIndex: Int) {
+        currentPageIndex = newPageIndex
     }
     
     // MARK: - Lifecycle
@@ -75,8 +91,9 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
         super.init(coder: aDecoder)
         let collectionViewSize = self.frame.size
         let itemWidth = collectionViewSize.width / cardWidthCoeff
-        let itemWidthWithMargins = itemWidth + cardMargin * 2
-        self.inset = (collectionViewSize.width - itemWidthWithMargins) / 2 + cardMargin
+//        let itemWidthWithMargins = itemWidth + cardMargin * 2
+//        self.inset = (collectionViewSize.width - itemWidthWithMargins) / 2 + cardMargin
+        self.inset = (collectionViewSize.width - itemWidth) / 2
     }
     
     // MARK: - Overrides
@@ -85,14 +102,14 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
         invisibleScrollView.setContentOffset(rect.origin, animated: animated)
     }
     
-    override func scrollToItem(at indexPath: IndexPath, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
-        super.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
-        
-        let originX = (CGFloat(indexPath.item) * (frame.size.width - (inset * 2)))
-        let rect = CGRect(x: originX, y: 0, width: frame.size.width - (inset * 2), height: frame.height)
-        scrollRectToVisible(rect, animated: animated)
-        lastCurrentCenterCellIndex = indexPath
-    }
+//    override func scrollToItem(at indexPath: IndexPath, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
+//        super.scrollToItem(at: indexPath, at: scrollPosition, animated: animated)
+//
+//        let originX = (CGFloat(indexPath.item) * (frame.size.width - (inset * 2)))
+//        let rect = CGRect(x: originX, y: 0, width: frame.size.width - (inset * 2), height: frame.height)
+//        scrollRectToVisible(rect, animated: animated)
+//        lastCurrentCenterCellIndex = indexPath
+//    }
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -112,9 +129,9 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
         carousel.didScroll()
      }
     */
-    public func didScroll() {
-        scrollViewDidScroll(self)
-    }
+//    func didScroll() {
+//        scrollViewDidScroll(self)
+//    }
     
     // MARK: - ScrollView Magic
     
@@ -164,7 +181,7 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
     
     func configureLayout() {
         // Create a ScalingCarouselLayout using our inset
-        collectionViewLayout = CarouselFlowLayout(withInset: inset, cardMargin: cardMargin)
+        collectionViewLayout = CarouselFlowLayout(withInset: inset/*, cardMargin: cardMargin*/)
         
         /*
          Only continue if we have a reference to
@@ -192,7 +209,12 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
     // MARK: - UIScrollViewDelegate
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
+//        let pageIndex = Int(abs(round(scrollView.contentOffset.x / scrollView.frame.width)))
+//        if pageIndex != currentPageIndex {
+//            currentPageIndex = pageIndex
+//            carouselDelegate?.didChangePageIndex(newPageIndex: pageIndex)
+//        }
+
         /*
          Move the ScalingCarousel based on the
          contentOffset of the 'invisible' UIScrollView
@@ -205,16 +227,24 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
                 infoCardCell.scale(withInset: inset)
             }
         }
+        
+//        guard let indexPath = currentCenterCellIndex else { return }
+//        lastCurrentCenterCellIndex = indexPath
+//        carouselDelegate?.didChangePageIndex(newPageIndex: indexPath.row)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        delegate?.scrollViewDidEndDecelerating?(scrollView)
+//        delegate?.scrollViewDidEndDecelerating?(scrollView)
         guard let indexPath = currentCenterCellIndex else { return }
         lastCurrentCenterCellIndex = indexPath
+        carouselDelegate?.didChangePageIndex(newPageIndex: indexPath.row)
     }
     
     private func updateOffSet() {
-        contentOffset = invisibleScrollView.contentOffset
+        let offsetX = invisibleScrollView.contentOffset.x * parallaxFactor
+        let offset = CGPoint(x: offsetX, y: invisibleScrollView.contentOffset.y)
+        //contentOffset = invisibleScrollView.contentOffset
+        contentOffset = offset
     }
 
 }

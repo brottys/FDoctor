@@ -13,12 +13,12 @@ import UIKit
 class CarouselFlowLayout: UICollectionViewFlowLayout {
     
     private var inset: CGFloat = 0.0
-    private var cardMargin: CGFloat = 0.0
+    //private var cardMargin: CGFloat = 0.0
     
-    convenience init(withInset inset: CGFloat, cardMargin: CGFloat) {
+    convenience init(withInset inset: CGFloat/*, cardMargin: CGFloat*/) {
         self.init()
         self.inset = inset
-        self.cardMargin = cardMargin
+        //self.cardMargin = cardMargin
     }
     
     override func prepare() {
@@ -28,10 +28,14 @@ class CarouselFlowLayout: UICollectionViewFlowLayout {
         collectionView?.isPagingEnabled = true
         
         itemSize = collectionViewSize
-        itemSize.height = itemSize.height - cardMargin * 2
+        //itemSize.height = itemSize.height - cardMargin * 2
         itemSize.width = itemSize.width - inset * 2
         
-        minimumLineSpacing = cardMargin
+        //minimumLineSpacing = cardMargin
+        minimumLineSpacing = 0
+        minimumInteritemSpacing = 0
+        headerReferenceSize = .zero
+        footerReferenceSize = .zero
         
         sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
     }

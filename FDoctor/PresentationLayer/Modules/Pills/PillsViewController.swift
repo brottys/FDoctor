@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsModelDelegate {
+class PillsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, IPillsModelDelegate, CarouselCollectionViewDelegate {
     
     private let presentationAssembly: IPresentationAssembly
     private let model: IPillsModel
@@ -60,6 +60,13 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
         return cell
     }
     
+//    // MARK: - UICollectionViewDelegate
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        guard let currentPillIndex = carouselCollectionView.currentCenterCellIndex?.row else { return }
+//        model.didSelectPillAt(index: currentPillIndex)
+//    }
+    
     // MARK: - Actions
     
     @IBAction func refresh() {
@@ -82,16 +89,16 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     }
     
     func setCurrentPillAt(index: Int) {
-        if index > -1 {
-            let indexPath = IndexPath(row: index, section: 0)
-            let pill = dataSource[index]
-            
-            DispatchQueue.main.async {
-                self.pageControl.currentPage = index
-                self.nameLabel.text = pill.name
-                self.descrDoseLabel.text = pill.descrDose
-                self.carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-            }
+        guard (0..<dataSource.count).contains(index) else { return }
+        
+        let indexPath = IndexPath(row: index, section: 0)
+        let pill = dataSource[index]
+        
+        DispatchQueue.main.async {
+            self.pageControl.currentPage = index
+            self.nameLabel.text = pill.name
+            self.descrDoseLabel.text = pill.descrDose
+//            self.carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
     
@@ -105,6 +112,8 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     
     private func configureUI() {
         carouselCollectionView.register(UINib(nibName: "\(CarouselCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: carouselCellIdentifier)
+        
+        carouselCollectionView.carouselDelegate = self
         
 //        if let flowLayout = carouselCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
 //            flowLayout.minimumLineSpacing = cardMargin
@@ -123,6 +132,13 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
             let inset = (carouselCollectionView.bounds.width - itemWidthWithMargins) / 2 + cardMargin
             flowLayout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
         }
+    }
+    
+    // MARK: - CarouselCollectionViewDelegate
+    
+    func didChangePageIndex(newPageIndex: Int) {
+        print(newPageIndex)
+        model.didSelectPillAt(index: newPageIndex)
     }
     
 }

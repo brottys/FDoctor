@@ -20,10 +20,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="179" height="187"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKT-lp-XgP" userLabel="Card View">
-                                <rect key="frame" x="0.0" y="0.0" width="179" height="187"/>
+                                <rect key="frame" x="8" y="8" width="163" height="171"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1000" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f62-DT-blR">
-                                        <rect key="frame" x="16" y="16" width="147" height="155"/>
+                                        <rect key="frame" x="16" y="16" width="131" height="139"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -42,10 +42,10 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="mKT-lp-XgP" secondAttribute="trailing" id="4Pv-bg-JwE"/>
-                            <constraint firstAttribute="bottom" secondItem="mKT-lp-XgP" secondAttribute="bottom" id="A9k-B3-IDX"/>
-                            <constraint firstItem="mKT-lp-XgP" firstAttribute="top" secondItem="jaS-rF-izI" secondAttribute="top" id="bzl-d6-aPo"/>
-                            <constraint firstItem="mKT-lp-XgP" firstAttribute="leading" secondItem="jaS-rF-izI" secondAttribute="leading" id="vJe-gd-1kV"/>
+                            <constraint firstAttribute="trailing" secondItem="mKT-lp-XgP" secondAttribute="trailing" constant="8" id="4Pv-bg-JwE"/>
+                            <constraint firstAttribute="bottom" secondItem="mKT-lp-XgP" secondAttribute="bottom" constant="8" id="A9k-B3-IDX"/>
+                            <constraint firstItem="mKT-lp-XgP" firstAttribute="top" secondItem="jaS-rF-izI" secondAttribute="top" constant="8" id="bzl-d6-aPo"/>
+                            <constraint firstItem="mKT-lp-XgP" firstAttribute="leading" secondItem="jaS-rF-izI" secondAttribute="leading" constant="8" id="vJe-gd-1kV"/>
                         </constraints>
                     </view>
                 </subviews>

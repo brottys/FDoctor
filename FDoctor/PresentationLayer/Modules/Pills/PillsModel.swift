@@ -18,6 +18,7 @@ protocol IPillsModel: class {
     var delegate: IPillsModelDelegate? { get set }
     func fetchPills()
     func nextPill()
+    func didSelectPillAt(index: Int)
 }
 
 protocol IPillsModelDelegate: class {
@@ -69,6 +70,12 @@ class PillsModel: IPillsModel {
         
         currentPillIndex += 1
     
+        delegate?.setCurrentPillAt(index: currentPillIndex)
+    }
+    
+    func didSelectPillAt(index: Int) {
+        guard index != currentPillIndex else { return }
+        currentPillIndex = index
         delegate?.setCurrentPillAt(index: currentPillIndex)
     }
     
