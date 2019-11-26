@@ -15,6 +15,7 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     private let model: IPillsModel
     private let carouselCellIdentifier = "CarouselCollectionViewCell"
     private var dataSource: [PillDisplayModel] = []
+    private var isCarouselScrolling: Bool = false
     
     @IBOutlet weak var carouselCollectionView: CarouselCollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -87,8 +88,10 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
             self.labelsView.fadeOut() {_ in
                 self.labelsView.fadeIn()
             }
-            
-//            self.carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            if !self.isCarouselScrolling {
+                self.carouselCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+                //self.carouselCollectionView.didScroll()
+            }
         }
     }
     
@@ -114,6 +117,14 @@ class PillsViewController: UIViewController, UICollectionViewDataSource, IPillsM
     
     func didChangePageIndex(newPageIndex: Int) {
         model.didSelectPillAt(index: newPageIndex)
+    }
+    
+    func carouselStartedScrolling() {
+        isCarouselScrolling = true
+    }
+    
+    func carouselStoppedScrolling() {
+        isCarouselScrolling = false
     }
     
 }

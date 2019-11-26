@@ -12,6 +12,8 @@ import UIKit
 
 protocol CarouselCollectionViewDelegate: class {
     func didChangePageIndex(newPageIndex: Int)
+    func carouselStartedScrolling()
+    func carouselStoppedScrolling()
 }
 
 class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
@@ -190,10 +192,26 @@ class CarouselCollectionView: UICollectionView, UIScrollViewDelegate {
         carouselDelegate?.didChangePageIndex(newPageIndex: indexPath.row)
     }
     
+    func didScroll() {
+        scrollViewDidScroll(self)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        carouselDelegate?.carouselStartedScrolling()
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            carouselDelegate?.carouselStoppedScrolling()
+        }
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 //        guard let indexPath = currentCenterCellIndex else { return }
 //        lastCurrentCenterCellIndex = indexPath
 //        carouselDelegate?.didChangePageIndex(newPageIndex: indexPath.row)
+        
+        carouselDelegate?.carouselStoppedScrolling()
     }
     
     private func updateOffSet() {
