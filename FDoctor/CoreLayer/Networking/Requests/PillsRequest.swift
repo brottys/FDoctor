@@ -10,10 +10,11 @@ import Foundation
 
 class PillsRequest: IRequest {
     
-    private let baseUrl = "https://cloud.fdoctor.ru"
-    private let command = "/test_task"
+//    private let baseUrl = "https://cloud.fdoctor.ru"
+//    private let command = "/test_task"
+    private let baseUrl = "https://api.jsonbin.io/b/5dff5f75bda54254c5f0fd2b"
     private var urlString: String {
-        return baseUrl + command
+        return baseUrl /* + command */
     }
     
     // MARK: - IRequest
