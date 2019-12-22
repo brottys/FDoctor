@@ -4,7 +4,7 @@
 
 # Features
 
-* Downloading a list of pills from https://cloud.fdoctor.ru/test_task/
+* Downloading a list of pills from https://api.jsonbin.io/b/5dff5f75bda54254c5f0fd2b (was https://cloud.fdoctor.ru/test_task/)
 * Every pill has an image, title, description and dose
 * Pills display by carousel
 * Switching between pills happens by swipe gesture
